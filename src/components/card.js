@@ -1,18 +1,22 @@
-// import { faCoffee } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
-const Card = (
-  //   avatar = Math.floor(Math.random() * (11 - 1)) + 1,
-  sender = "Sender_name",
-  message = "message_text"
-) => {
+const Card = (props) => {
+  const avatar = require(`../assets/avatars/avatar_${
+    Math.floor(Math.random() * (11 - 1 + 1)) + 1
+  }.svg`);
+
+  console.log(avatar);
   return (
     <div className="cpn-card">
-      <div className="cpn-card-avatar">hello</div>
-      <div className="cpn-card-text">
-        <h3>{sender}</h3>
-        <p>{message}</p>
+      <div className="cpn-card_left">
+        <img src={avatar} alt="avatar" className="cpn-card-avatar" />
+        <div className="cpn-card-text">
+          <h3>{`${props.sender}`}</h3>
+          <p>{props.message}</p>
+        </div>
       </div>
-      {/* <faCoffee /> */}
+      <FontAwesomeIcon icon={faTrash} className="cpn-card-trash" />
     </div>
   );
 };
